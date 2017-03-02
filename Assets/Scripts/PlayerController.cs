@@ -35,9 +35,7 @@ public class PlayerController : NetworkBehaviour {
 		if (x != 0f || y != 0f) {
 			anim.SetBool ("move", true);
 			if (x != 0f) {
-				anim.SetFloat ("h", Mathf.Abs (x));
-				sr.flipX = x < 0f ? false : true;
-
+				anim.SetFloat ("h", x);
 			} else if (y != 0f) {
 				anim.SetFloat ("v", y);
 			}
