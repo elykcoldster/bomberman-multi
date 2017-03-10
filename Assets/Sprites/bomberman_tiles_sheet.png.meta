@@ -1,12 +1,18 @@
 fileFormatVersion: 2
 guid: 6bab71ad99ce3444eb0f58dc50852f0d
-timeCreated: 1489111931
+timeCreated: 1489167908
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: brick_grey
     21300002: block_grey
     21300004: speed_up
+    21300006: brick_break_0
+    21300008: brick_break_1
+    21300010: brick_break_2
+    21300012: brick_break_3
+    21300014: brick_break_4
+    21300016: brick_break_5
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -103,6 +109,84 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 269
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: brick_break_0
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: brick_break_1
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: brick_break_2
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: brick_break_3
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: brick_break_4
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 0
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: brick_break_5
+      rect:
+        serializedVersion: 2
+        x: 239
         y: 0
         width: 16
         height: 16

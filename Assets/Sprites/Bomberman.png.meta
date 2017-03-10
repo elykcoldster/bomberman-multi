@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: c558dd77d44447f4da94c7af398e81d7
-timeCreated: 1488429074
+timeCreated: 1489169311
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -13,6 +13,14 @@ TextureImporter:
     21300012: bman_up_1
     21300014: bman_up_2
     21300016: bman_up_3
+    21300018: bomberman_die_0
+    21300020: bomberman_die_1
+    21300022: bomberman_die_2
+    21300024: bomberman_die_3
+    21300026: bomberman_die_4
+    21300028: bomberman_die_5
+    21300030: bomberman_die_6
+    21300032: bomberman_die_7
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -190,6 +198,110 @@ TextureImporter:
         y: 515
         width: 15
         height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_die_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 448
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_die_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 448
+        width: 15
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_die_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 448
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_die_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 448
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_die_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 448
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_die_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 448
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_die_6
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 448
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_die_7
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 448
+        width: 15
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

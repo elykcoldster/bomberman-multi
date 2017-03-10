@@ -12,16 +12,27 @@ public class PlayerController : NetworkBehaviour {
 	SpriteRenderer sr;
 	Rigidbody2D rb;
 
+	int max_bombs, num_bombs, max_range;
+	bool dead;
+
 	void Start() {
 		anim = GetComponent<Animator> ();
 		sr = GetComponent<SpriteRenderer> ();
 		rb = GetComponent<Rigidbody2D> ();
+
+		max_bombs = 1;
+		max_range = 1;
+		num_bombs = 0;
+		dead = false;
 	}
 
 	void Update()
 	{
 		SpriteOrder ();
 		if (!isLocalPlayer) {
+			return;
+		}
+		if (dead) {
 			return;
 		}
 		Move ();
@@ -61,13 +72,37 @@ public class PlayerController : NetworkBehaviour {
 		anim.SetBool ("up", v == 0f ? false : (v > 0f ? true : false));
 		anim.SetBool ("down", v == 0f ? false : (v < 0f ? true : false));
 	}
+
 	[Command]
 	void CmdBomb() {
-		GameObject bomb = Instantiate (Global.instance.NetworkPrefab ("bomb"), transform.position, Quaternion.identity);
-		NetworkServer.Spawn (bomb);
+		float yoff = GetComponent<BoxCollider2D> ().offset.y;
+		if (num_bombs < max_bombs) {
+			GameObject bomb = Instantiate (Global.instance.NetworkPrefab ("bomb"), transform.position + Vector3.up * yoff, Quaternion.identity);
+			bomb.GetComponent<Bomb> ().parent = gameObject;
+			bomb.GetComponent<Bomb> ().range = max_range;
+
+			NetworkServer.Spawn (bomb);
+			num_bombs++;
+		}
 	}
 
 	void SpriteOrder() {
 		sr.sortingOrder = -Mathf.RoundToInt (transform.position.y * 100f);
+	}
+
+	public void DecreaseBomb() {
+		num_bombs--;
+	}
+
+	public void Die() {
+		anim.SetTrigger ("dead");
+		dead = true;
+		StartCoroutine (RespawnInSeconds(2f));
+	}
+
+	IEnumerator RespawnInSeconds(float t) {
+		yield return new WaitForSeconds (t);
+		dead = false;
+		anim.SetTrigger ("reset");
 	}
 }
