@@ -1,18 +1,12 @@
 fileFormatVersion: 2
-guid: c558dd77d44447f4da94c7af398e81d7
-timeCreated: 1488429074
+guid: aa142cebe25f26c4881486ccecc6a393
+timeCreated: 1489118905
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: bman_left_1
-    21300002: bman_left_2
-    21300004: bman_left_3
-    21300006: bman_down_2
-    21300008: bman_down_1
-    21300010: bman_down_3
-    21300012: bman_up_1
-    21300014: bman_up_2
-    21300016: bman_up_3
+    21300000: bomb_0
+    21300002: bomb_1
+    21300004: bomb_2
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -79,117 +73,39 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bman_left_1
+      name: bomb_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 515
+        y: 60
         width: 16
-        height: 24
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: bman_left_2
+      name: bomb_1
       rect:
         serializedVersion: 2
-        x: 17
-        y: 515
+        x: 0
+        y: 30
         width: 16
-        height: 24
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: bman_left_3
+      name: bomb_2
       rect:
         serializedVersion: 2
-        x: 34
-        y: 515
-        width: 15
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: bman_down_2
-      rect:
-        serializedVersion: 2
-        x: 66
-        y: 515
-        width: 15
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: bman_down_1
-      rect:
-        serializedVersion: 2
-        x: 50
-        y: 515
-        width: 15
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: bman_down_3
-      rect:
-        serializedVersion: 2
-        x: 82
-        y: 515
-        width: 15
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: bman_up_1
-      rect:
-        serializedVersion: 2
-        x: 98
-        y: 515
-        width: 15
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: bman_up_2
-      rect:
-        serializedVersion: 2
-        x: 114
-        y: 515
-        width: 15
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: bman_up_3
-      rect:
-        serializedVersion: 2
-        x: 130
-        y: 515
-        width: 15
-        height: 24
+        x: 1
+        y: 0
+        width: 12
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
