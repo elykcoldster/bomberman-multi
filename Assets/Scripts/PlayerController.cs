@@ -12,7 +12,8 @@ public class PlayerController : NetworkBehaviour {
 	SpriteRenderer sr;
 	Rigidbody2D rb;
 
-	int max_bombs, num_bombs, max_range;
+	[SyncVar]
+	public int maxBombs, numBombs, maxRange;
 	bool dead;
 
 	void Start() {
@@ -20,9 +21,9 @@ public class PlayerController : NetworkBehaviour {
 		sr = GetComponent<SpriteRenderer> ();
 		rb = GetComponent<Rigidbody2D> ();
 
-		max_bombs = 1;
-		max_range = 1;
-		num_bombs = 0;
+		maxBombs = 1;
+		maxRange = 1;
+		numBombs = 0;
 		dead = false;
 	}
 
@@ -76,13 +77,13 @@ public class PlayerController : NetworkBehaviour {
 	[Command]
 	void CmdBomb() {
 		float yoff = GetComponent<BoxCollider2D> ().offset.y;
-		if (num_bombs < max_bombs) {
+		if (numBombs < maxBombs) {
 			GameObject bomb = Instantiate (Global.instance.NetworkPrefab ("bomb"), transform.position + Vector3.up * yoff, Quaternion.identity);
 			bomb.GetComponent<Bomb> ().parent = gameObject;
-			bomb.GetComponent<Bomb> ().range = max_range;
+			bomb.GetComponent<Bomb> ().range = maxRange;
 
 			NetworkServer.Spawn (bomb);
-			num_bombs++;
+			numBombs++;
 		}
 	}
 
@@ -91,10 +92,11 @@ public class PlayerController : NetworkBehaviour {
 	}
 
 	public void DecreaseBomb() {
-		num_bombs--;
+		numBombs--;
 	}
 
-	public void Die() {
+	[ClientRpc]
+	public void RpcDie() {
 		anim.SetTrigger ("dead");
 		dead = true;
 		StartCoroutine (RespawnInSeconds(2f));
