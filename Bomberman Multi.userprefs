@@ -1,13 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Bomb.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BombSpawn.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="68" Column="3" />
-      <File FileName="Assets\Scripts\Bomb.cs" Line="84" Column="1" />
-      <File FileName="Assets\Scripts\Destructable.cs" Line="13" Column="44" />
-      <File FileName="Assets\Scripts\Global.cs" Line="33" Column="26" />
-      <File FileName="Assets\Scripts\Bullet.cs" Line="24" Column="19" />
-      <File FileName="Assets\Scripts\Fire.cs" Line="9" Column="3" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="95" Column="19" />
+      <File FileName="Assets\Scripts\Bomb.cs" Line="84" Column="4" />
+      <File FileName="Assets\Scripts\Destructable.cs" Line="12" Column="17" />
+      <File FileName="Assets\Scripts\Global.cs" Line="55" Column="3" />
+      <File FileName="Assets\Scripts\Bullet.cs" Line="13" Column="2" />
+      <File FileName="Assets\Scripts\Fire.cs" Line="18" Column="41" />
+      <File FileName="Assets\Scripts\BombSpawn.cs" Line="38" Column="32" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

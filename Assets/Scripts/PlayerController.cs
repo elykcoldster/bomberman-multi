@@ -5,8 +5,8 @@ using UnityEngine.Networking;
 
 public class PlayerController : NetworkBehaviour {
 
-	public float speed = 5.0f;
-	public float animationSpeed = 2.0f;
+	[SyncVar]
+	public float speed = 5.0f, speedMult = 1.0f;
 
 	Animator anim;
 	SpriteRenderer sr;
@@ -14,6 +14,8 @@ public class PlayerController : NetworkBehaviour {
 
 	[SyncVar]
 	public int maxBombs, numBombs, maxRange;
+	[SyncVar]
+	public Vector3 spawnPoint;
 	bool dead;
 
 	void Start() {
@@ -43,7 +45,7 @@ public class PlayerController : NetworkBehaviour {
 	}
 
 	public override void OnStartLocalPlayer() {
-		// GetComponent<MeshRenderer> ().material.color = Color.blue;
+		CmdSetSpawn ();
 	}
 
 	void Move() {
@@ -64,7 +66,8 @@ public class PlayerController : NetworkBehaviour {
 			anim.SetFloat ("v", 0f);
 		}
 		// transform.Translate(new Vector2(x, y) * speed * Time.deltaTime);
-		rb.velocity = (Vector2.right * x + Vector2.up * y) * speed;
+		rb.velocity = (Vector2.right * x + Vector2.up * y) * speed * speedMult;
+		anim.speed = speedMult;
 	}
 
 	void Turn(float h, float v) {
@@ -74,37 +77,89 @@ public class PlayerController : NetworkBehaviour {
 		anim.SetBool ("down", v == 0f ? false : (v < 0f ? true : false));
 	}
 
+	void SpriteOrder() {
+		sr.sortingOrder = -Mathf.RoundToInt (transform.position.y * 100f);
+	}
+
+	[Command]
+	void CmdSetSpawn() {
+		spawnPoint = transform.position;
+	}
+
 	[Command]
 	void CmdBomb() {
 		float yoff = GetComponent<BoxCollider2D> ().offset.y;
 		if (numBombs < maxBombs) {
-			GameObject bomb = Instantiate (Global.instance.NetworkPrefab ("bomb"), transform.position + Vector3.up * yoff, Quaternion.identity);
-			bomb.GetComponent<Bomb> ().parent = gameObject;
-			bomb.GetComponent<Bomb> ().range = maxRange;
-
-			NetworkServer.Spawn (bomb);
+			Global.instance.bombSpawn.SpawnBomb (gameObject, maxRange, yoff);
 			numBombs++;
 		}
 	}
 
-	void SpriteOrder() {
-		sr.sortingOrder = -Mathf.RoundToInt (transform.position.y * 100f);
+	[Command]
+	void CmdIncreaseRange() {
+		maxRange++;
+	}
+
+	[Command]
+	void CmdIncreaseBombs() {
+		maxBombs++;
+	}
+
+	[Command]
+	void CmdIncreaseSpeed() {
+		speedMult += 0.25f;
+	}
+
+	[Command]
+	void CmdDie() {
+		rb.velocity = Vector2.zero;
+		anim.SetTrigger ("dead");
+		dead = true;
+		StartCoroutine (RespawnInSeconds(2f));	
+	}
+
+	[ClientRpc]
+	void RpcDie() {
+		rb.velocity = Vector2.zero;
+		anim.SetTrigger ("dead");
+		dead = true;
+		StartCoroutine (RespawnInSeconds(2f));	
 	}
 
 	public void DecreaseBomb() {
 		numBombs--;
 	}
 
-	[ClientRpc]
-	public void RpcDie() {
-		anim.SetTrigger ("dead");
-		dead = true;
-		StartCoroutine (RespawnInSeconds(2f));
+	public void Die() {
+		if (isServer) {
+			RpcDie ();
+		} else {
+			CmdDie ();
+		}
 	}
 
+	public void IncreaseSpeed() {
+		if (isServer) {
+			CmdIncreaseSpeed ();
+		}
+	}
+
+	public void IncreaseRange() {
+		if (isServer) {
+			CmdIncreaseRange ();
+		}
+	}
+
+	public void IncreaseBombs() {
+		if (isServer) {
+			CmdIncreaseBombs ();
+		}
+	}
+		
 	IEnumerator RespawnInSeconds(float t) {
 		yield return new WaitForSeconds (t);
 		dead = false;
 		anim.SetTrigger ("reset");
+		rb.position = spawnPoint;
 	}
 }

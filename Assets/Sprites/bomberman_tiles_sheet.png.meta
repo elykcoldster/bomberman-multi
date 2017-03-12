@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 6bab71ad99ce3444eb0f58dc50852f0d
-timeCreated: 1489167908
+timeCreated: 1489287227
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -13,6 +13,10 @@ TextureImporter:
     21300012: brick_break_3
     21300014: brick_break_4
     21300016: brick_break_5
+    21300018: bomberman_tiles_sheet_0
+    21300020: fire_up
+    21300022: bomb_up
+    21300024: bomb_push
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -187,6 +191,58 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 239
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomberman_tiles_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fire_up
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomb_up
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bomb_push
+      rect:
+        serializedVersion: 2
+        x: 419
         y: 0
         width: 16
         height: 16

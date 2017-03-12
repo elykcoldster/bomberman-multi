@@ -29,6 +29,7 @@ public class Destructable : MonoBehaviour {
 
 	public void Explode() {
 		anim.SetTrigger ("explode");
+		Global.instance.SpawnItem (transform.position);
 	}
 
 	public void Reset() {

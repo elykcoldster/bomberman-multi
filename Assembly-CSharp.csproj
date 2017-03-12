@@ -46,12 +46,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\BombPush.cs" />
+     <Compile Include="Assets\BombUp.cs" />
+     <Compile Include="Assets\RangeUp.cs" />
      <Compile Include="Assets\Scripts\Bomb.cs" />
+     <Compile Include="Assets\Scripts\BombSpawn.cs" />
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\Destructable.cs" />
      <Compile Include="Assets\Scripts\Fire.cs" />
      <Compile Include="Assets\Scripts\Global.cs" />
+     <Compile Include="Assets\Scripts\Item.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\SpeedUp.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

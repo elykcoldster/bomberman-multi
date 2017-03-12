@@ -14,6 +14,12 @@ public class Fire : MonoBehaviour {
 		
 	}
 
+	void OnTriggerEnter2D(Collider2D c) {
+		if (c.transform.tag == "Player") {
+			c.GetComponent<PlayerController> ().Die ();
+		}
+	}
+
 	public void FireState(string state) {
 		GetComponentInChildren<SpriteRenderer> ().GetComponent<Animator> ().SetTrigger (state);
 	}
