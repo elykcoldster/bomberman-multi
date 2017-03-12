@@ -15,10 +15,15 @@ public class BombSpawn : NetworkBehaviour {
 		
 	}
 
-	public void SpawnBomb(GameObject parent, int range, float yoffset) {
-		GameObject bomb = (GameObject)Instantiate(Global.instance.NetworkPrefab ("bomb"), parent.transform.position + Vector3.up * yoffset, Quaternion.identity);
+	public void SpawnBomb(GameObject parent, int range) {
+		Vector3 parentPos = parent.transform.position;
+		parentPos.x = Mathf.Round (parentPos.x / Global.unit) * Global.unit;
+		parentPos.y = Mathf.Round (parentPos.y / Global.unit) * Global.unit;
+
+		GameObject bomb = (GameObject)Instantiate(Global.instance.NetworkPrefab ("bomb"), parentPos, Quaternion.identity);
 		bomb.GetComponent<Bomb> ().parent = parent;
 		bomb.GetComponent<Bomb> ().range = range;
+
 		NetworkServer.Spawn (bomb);
 	}
 

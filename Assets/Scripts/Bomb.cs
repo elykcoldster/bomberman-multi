@@ -19,14 +19,16 @@ public class Bomb : NetworkBehaviour {
 
 		dirCols = new Collider2D [4];
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	void OnTriggerExit2D(Collider2D c) {
+		if (c.transform == parent.transform) {
+			GetComponent<Collider2D> ().isTrigger = false;
+		}
 	}
 
 	void OnDestroy() {
 		// SpawnFire ();
+		parent.GetComponent<PlayerController>().BombAudio();
 		Explode ();
 		parent.GetComponent<PlayerController> ().DecreaseBomb ();
 	}
@@ -42,7 +44,8 @@ public class Bomb : NetworkBehaviour {
 	}
 
 	void Explode() {
-		int layerMask = ~(1 << LayerMask.NameToLayer ("Bomb"));
+		int layerMask = ~(1 << LayerMask.NameToLayer ("Ignore"));
+		gameObject.layer = LayerMask.NameToLayer ("Ignore");
 		float r = (float)range;
 		RaycastHit2D right = Physics2D.Raycast (transform.position, Vector2.right, r / 2 + sr.bounds.size.x / 2, layerMask);
 		RaycastHit2D left = Physics2D.Raycast (transform.position, Vector2.left, r / 2 + sr.bounds.size.x / 2, layerMask);
@@ -54,9 +57,6 @@ public class Bomb : NetworkBehaviour {
 		dirCols [2] = up.collider;
 		dirCols [3] = down.collider;
 
-		ExplodeDirection ();
-		ExplodeDirection ();
-		ExplodeDirection ();
 		ExplodeDirection ();
 
 		Global.instance.bombSpawn.DrawFlames (transform.position, range);

@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 public class PlayerController : NetworkBehaviour {
-
 	[SyncVar]
 	public float speed = 5.0f, speedMult = 1.0f;
 
@@ -16,6 +15,7 @@ public class PlayerController : NetworkBehaviour {
 	public int maxBombs, numBombs, maxRange;
 	[SyncVar]
 	public Vector3 spawnPoint;
+	public AudioClip bombAudio, deathAudio, itemAudio;
 	bool dead;
 
 	void Start() {
@@ -81,6 +81,17 @@ public class PlayerController : NetworkBehaviour {
 		sr.sortingOrder = -Mathf.RoundToInt (transform.position.y * 100f);
 	}
 
+	void ProcessDead() {
+		dead = true;
+		anim.SetTrigger ("dead");
+		transform.tag = "Dead";
+
+		GetComponent<AudioSource> ().clip = deathAudio;
+		GetComponent<AudioSource> ().Play ();
+		rb.velocity = Vector2.zero;
+		StartCoroutine (RespawnInSeconds(2f));	
+	}
+
 	[Command]
 	void CmdSetSpawn() {
 		spawnPoint = transform.position;
@@ -88,9 +99,8 @@ public class PlayerController : NetworkBehaviour {
 
 	[Command]
 	void CmdBomb() {
-		float yoff = GetComponent<BoxCollider2D> ().offset.y;
 		if (numBombs < maxBombs) {
-			Global.instance.bombSpawn.SpawnBomb (gameObject, maxRange, yoff);
+			Global.instance.bombSpawn.SpawnBomb (gameObject, maxRange);
 			numBombs++;
 		}
 	}
@@ -112,18 +122,12 @@ public class PlayerController : NetworkBehaviour {
 
 	[Command]
 	void CmdDie() {
-		rb.velocity = Vector2.zero;
-		anim.SetTrigger ("dead");
-		dead = true;
-		StartCoroutine (RespawnInSeconds(2f));	
+		ProcessDead ();
 	}
 
 	[ClientRpc]
 	void RpcDie() {
-		rb.velocity = Vector2.zero;
-		anim.SetTrigger ("dead");
-		dead = true;
-		StartCoroutine (RespawnInSeconds(2f));	
+		ProcessDead ();
 	}
 
 	public void DecreaseBomb() {
@@ -155,10 +159,21 @@ public class PlayerController : NetworkBehaviour {
 			CmdIncreaseBombs ();
 		}
 	}
+
+	public void BombAudio() {
+		GetComponent<AudioSource> ().clip = bombAudio;
+		GetComponent<AudioSource> ().Play ();
+	}
+
+	public void ItemAudio() {
+		GetComponent<AudioSource> ().clip = itemAudio;
+		GetComponent<AudioSource> ().Play ();
+	}
 		
 	IEnumerator RespawnInSeconds(float t) {
 		yield return new WaitForSeconds (t);
 		dead = false;
+		transform.tag = "Player";
 		anim.SetTrigger ("reset");
 		rb.position = spawnPoint;
 	}

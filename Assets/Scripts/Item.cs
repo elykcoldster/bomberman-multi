@@ -17,6 +17,7 @@ public class Item : MonoBehaviour {
 	protected void OnTriggerEnter2D(Collider2D c) {
 		if (c.transform.tag == "Player") {
 			Destroy (gameObject);
+			c.GetComponent<PlayerController> ().ItemAudio ();
 		}
 	}
 }
